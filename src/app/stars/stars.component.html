@@ -2,11 +2,21 @@
   <div class="row">
     <div class="col-sm-12">
       @for (star of stars_list; track star.name) {
-      <div class="card-header">
-        {{ star.name }}
+      <div class="card text-white bg-secondary mb-3">
+        <div class="card-header">
+          {{ star.name }}
+        </div>
+        <div class="card-body">
+          <p class="card-text">Radius (km): {{ star.radius }}</p>
+          <p class="card-text">Mass (solar masses): {{ star.mass }}</p>
+          <p class="card-text">Density (g/cm^3): {{ star.density }}</p>
+          <p class="card-text">Surface temperature (K): {{ star.surface_temperature }}</p>
+          <p class="card-text">Spectral classification: {{ star.spectral_classification }}</p>
+          <p class="card-text">Apparent magnitude: {{ star.apparent_magnitude }}</p>
+          <p class="card-text">Absolute magnitude: {{ star.absolute_magnitude }}</p>
+        </div>
+        <div class="card-footer">Distance (ly): {{ star.distance }}</div>
       </div>
-      <div class="card-body">This business is based in {{ star.radius }}</div>
-      <div class="card-footer">Rating: {{ star.distance }}</div>
       }
     </div>
   </div>

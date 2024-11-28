@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -19,6 +18,12 @@ export class WebService {
     );
   }
 
+  getStar(id: any) {
+    return this.http.get<any>(
+      'http://localhost:5000/api/v1.0/bodies/' + id + '?show_planets=false'
+    );
+  }
+
   getNumOfStars() {
     return this.http
       .get<any>('http://localhost:5000/api/v1.0/bodies/num_of_stars')
@@ -28,6 +33,6 @@ export class WebService {
   getLastPageNumber() {
     return this.getNumOfStars().pipe(
       map((numOfStars: number) => Math.ceil(numOfStars / this.pageSize))
-    )
+    );
   }
 }

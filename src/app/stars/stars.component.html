@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let star of stars_list; trackByName">
-            <td>{{ star.name }}</td>
+            <td style="cursor: pointer" [routerLink]="['/stars', star._id]">{{ star.name }}</td>
             <td>{{ star.radius | number }} km</td>
             <td>{{ star.mass }} M<sub>☉</sub></td>
             <td>{{ star.density }} g/cm<sup>3</sup></td>

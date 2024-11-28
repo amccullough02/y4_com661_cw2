@@ -1,12 +1,12 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { WebService } from '../web.service';
 import { CommonModule, DecimalPipe, isPlatformBrowser } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'stars',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, DecimalPipe],
+  imports: [CommonModule, DecimalPipe, RouterModule],
   providers: [WebService],
   templateUrl: './stars.component.html',
   styleUrl: './stars.component.css',

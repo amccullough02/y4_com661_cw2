@@ -1,0 +1,13 @@
+.table th {
+    width: 12.5%;
+    text-align: center;
+    white-space: normal;
+}
+
+.table td {
+    text-align: center;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}

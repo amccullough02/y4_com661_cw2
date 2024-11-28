@@ -1,34 +1,43 @@
 <div class="container" style="margin-top: 70px">
   <div class="row">
     <div class="col-sm-12 table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Star Name</th>
-              <th scope="col">Radius</th>
-              <th scope="col">Mass</th>
-              <th scope="col">Density</th>
-              <th scope="col">Surface<br>Temperature</th>
-              <th scope="col">Spectral<br>Classification</th>
-              <th scope="col">Apparent<br>Magnitude</th>
-              <th scope="col">Absolute<br>Magnitude</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (star of stars_list; track star.name) {
-            <tr>
-              <td>{{ star.name }}</td>
-              <td>{{ star.radius }}</td>
-              <td>{{ star.mass}}</td>
-              <td>{{ star.density}}</td>
-              <td>{{ star.surface_temperature}}</td>
-              <td>{{ star.spectral_classification}}</td>
-              <td>{{ star.apparent_magnitude}}</td>
-              <td>{{ star.absolute_magnitude}}</td>
-            </tr>
-          }
-          </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Star Name</th>
+            <th scope="col">Radius</th>
+            <th scope="col">Mass</th>
+            <th scope="col">Density</th>
+            <th scope="col">Surface<br />Temperature</th>
+            <th scope="col">Spectral<br />Classification</th>
+            <th scope="col">Apparent<br />Magnitude</th>
+            <th scope="col">Absolute<br />Magnitude</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let star of stars_list; trackByName">
+            <td>{{ star.name }}</td>
+            <td>{{ star.radius | number }} km</td>
+            <td>{{ star.mass }} M<sub>☉</sub></td>
+            <td>{{ star.density }} g/cm<sup>3</sup></td>
+            <td>{{ star.surface_temperature }} K</td>
+            <td>{{ star.spectral_classification }}</td>
+            <td>{{ star.apparent_magnitude }}</td>
+            <td>{{ star.absolute_magnitude }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <button class="btn btn-dark" (click)="previousPage()">Previous</button>
+    </div>
+    <div class="col-sm-4 text-center align-self-center">
+      Showing page {{ this.page }} of {{ this.lastPageNumber }}
+    </div>
+    <div class="col-sm-4 text-end">
+      <button class="btn btn-dark" (click)="nextPage()">Next</button>
     </div>
   </div>
 </div>

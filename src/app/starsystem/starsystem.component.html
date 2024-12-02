@@ -20,14 +20,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let planet of planets;">
+          <tr *ngFor="let planet of planets">
             <td>{{ planet.name }}</td>
             <td>{{ planet.radius | number }} km</td>
             <td>{{ planet.mass }} M<sub>🜨</sub></td>
             <td>{{ planet.density }} g/cm<sup>3</sup></td>
             <td>{{ planet.surface_temperature }} K</td>
-            <td>{{ planet.apoapsis | number  }} km</td>
-            <td>{{ planet.periapsis | number  }} km</td>
+            <td>{{ planet.apoapsis | number }} km</td>
+            <td>{{ planet.periapsis | number }} km</td>
             <td>{{ planet.eccentricity }}</td>
             <td>{{ planet.orbital_period }} days</td>
             <td>{{ planet.status }}</td>
@@ -36,6 +36,9 @@
           </tr>
         </tbody>
       </table>
+      <a [routerLink]="['/new_planet/', star_data._id]" class="btn btn-success" style="margin-top: 20px; cursor: pointer"
+        >Add Planet</a
+      >
     </div>
   </div>
 </div>

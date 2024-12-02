@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { StarsComponent } from './stars/stars.component';
 import { StarsystemComponent } from './starsystem/starsystem.component';
 import { LoginComponent } from './login/login.component';
+import { NewPlanet } from './newplanet/newplanet.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'new_planet/:id',
+    component: NewPlanet,
   },
 ];

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { WebService } from '../web.service';
-import { RouterOutlet, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'starsystem',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DecimalPipe],
+  imports: [CommonModule, RouterModule, DecimalPipe],
   providers: [WebService],
   templateUrl: './starsystem.component.html',
   styleUrl: './starsystem.component.css',

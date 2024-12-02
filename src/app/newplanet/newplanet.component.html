@@ -1,0 +1,148 @@
+<div class="container" style="margin-top: 70px">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h2 class="text-center">Add a new planet to {{ star_name }}</h2>
+      <form [formGroup]="newPlanetForm" (ngSubmit)="onSubmit()">
+        <!-- Planet Name -->
+        <div class="form-group">
+          <label for="name">Planet name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
+        </div>
+
+        <!-- Radius -->
+        <div class="form-group">
+          <label for="radius">Radius (km)</label>
+          <input
+            type="number"
+            name="radius"
+            id="radius"
+            class="form-control"
+            formControlName="radius"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="mass">Mass (earth masses)</label>
+          <input
+            type="number"
+            name="mass"
+            id="mass"
+            class="form-control"
+            formControlName="mass"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="density">Density (g/cm<sup>3</sup>)</label>
+          <input
+            type="number"
+            name="density"
+            id="density"
+            class="form-control"
+            formControlName="density"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="surfaceTemperature">Surface Temperature (K)</label>
+          <input
+            type="number"
+            name="surfaceTemperature"
+            id="surfaceTemperature"
+            class="form-control"
+            formControlName="surfaceTemperature"
+          />
+        </div>
+        <div class="form-group">
+          <label for="apoapsis">Apoapsis (km)</label>
+          <input
+            type="number"
+            name="apoapsis"
+            id="apoapsis"
+            class="form-control"
+            formControlName="apoapsis"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="periapsis">Periapsis (km)</label>
+          <input
+            type="number"
+            name="periapsis"
+            id="periapsis"
+            class="form-control"
+            formControlName="periapsis"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="eccentricity">Eccentricity</label>
+          <input
+            type="number"
+            name="eccentricity"
+            id="eccentricity"
+            class="form-control"
+            formControlName="eccentricity"
+            min="0"
+            max="1"
+            step="0.01"
+          />
+        </div>
+        <div class="form-group">
+          <label for="orbitalPeriod">Orbital Period (days)</label>
+          <input
+            type="number"
+            name="orbitalPeriod"
+            id="orbitalPeriod"
+            class="form-control"
+            formControlName="orbitalPeriod"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select
+            name="status"
+            id="status"
+            class="form-control"
+            formControlName="status"
+          >
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="discovered">Discovered</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="numOfMoons">Number of Moons</label>
+          <input
+            type="number"
+            name="numOfMoons"
+            id="numOfMoons"
+            class="form-control"
+            formControlName="numOfMoons"
+            min="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contributedBy">Contributed By</label>
+          <input
+            type="text"
+            name="contributedBy"
+            id="contributedBy"
+            class="form-control"
+            formControlName="contributedBy"
+          />
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top: 20px">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

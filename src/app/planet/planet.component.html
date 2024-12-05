@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 70px">
+  <div class="row justify-content-center">
+    <div class="col-sm-6">
+      <h1 class="text-center">{{ planet?.name }}</h1>
+      <p><strong>Radius: </strong>{{ planet?.radius | number }} km</p>
+      <p><strong>Mass: </strong>{{ planet?.mass }} M<sub>🜨</sub></p>
+      <p><strong>Density: </strong>{{ planet?.density }} g/cm<sup>3</sup></p>
+      <p>
+        <strong>Surface Temperature: </strong
+        >{{ planet?.surface_temperature }} K
+      </p>
+      <p><strong>Apopasis: </strong>{{ planet?.apoapsis | number }} km</p>
+      <p><strong>Periapsis: </strong>{{ planet?.periapsis | number }} km</p>
+      <p><strong>Eccentricity: </strong>{{ planet?.eccentricity }}</p>
+      <p><strong>Orbital Period: </strong>{{ planet?.orbital_period }} days</p>
+      <p><strong>Status: </strong>{{ planet?.status }}</p>
+      <p><strong>Number of Moons: </strong>{{ planet?.num_moons }}</p>
+      <p><strong>Contributed by: </strong>{{ planet?.contributed_by }}</p>
+      <div class="row d-flex justify-content-between">
+        <div class="col-sm-4">
+          <a
+            [routerLink]="['/edit_planet', planet_id]"
+            [queryParams]="{ star_id: star_id }"
+            class="btn btn-primary"
+            style="margin-top: 20px; cursor: pointer"
+            >Edit Planet</a
+          >
+        </div>
+        <div class="col-sm-4 text-end">
+          <a
+            [routerLink]="['/stars', star_id]"
+            class="btn btn-info"
+            style="margin-top: 20px; cursor: pointer"
+            >Return</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

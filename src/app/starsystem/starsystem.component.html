@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let planet of planets">
-            <td>{{ planet.name }}</td>
+            <td style="cursor: pointer" [routerLink]="['/planets', planet._id]" [queryParams]="{ star_id: star_id}">{{ planet.name }}</td>
             <td>{{ planet.radius | number }} km</td>
             <td>{{ planet.mass }} M<sub>🜨</sub></td>
             <td>{{ planet.density }} g/cm<sup>3</sup></td>

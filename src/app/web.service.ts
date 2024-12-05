@@ -57,4 +57,9 @@ export class WebService {
       { headers }
     );
   }
+
+  getPlanet(star_id: any, planet_id: any) {
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/bodies/' + star_id + '/planets/' + planet_id)
+  }
 }

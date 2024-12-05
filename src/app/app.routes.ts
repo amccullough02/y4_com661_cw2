@@ -4,6 +4,8 @@ import { StarsComponent } from './stars/stars.component';
 import { StarsystemComponent } from './starsystem/starsystem.component';
 import { LoginComponent } from './login/login.component';
 import { NewPlanet } from './newplanet/newplanet.component';
+import { PlanetComponent } from './planet/planet.component';
+import { EditPlanetComponent } from './editplanet/editplanet.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +27,13 @@ export const routes: Routes = [
   {
     path: 'new_planet/:id',
     component: NewPlanet,
+  },
+  {
+    path: 'planets/:id',
+    component: PlanetComponent,
+  },
+  {
+    path: 'edit_planet/:id',
+    component: EditPlanetComponent,
   },
 ];

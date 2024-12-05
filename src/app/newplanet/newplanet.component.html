@@ -47,13 +47,13 @@
           />
         </div>
         <div class="form-group">
-          <label for="surfaceTemperature">Surface Temperature (K)</label>
+          <label for="surface_temperature">Surface Temperature (K)</label>
           <input
             type="number"
-            name="surfaceTemperature"
-            id="surfaceTemperature"
+            name="surface_temperature"
+            id="surface_temperature"
             class="form-control"
-            formControlName="surfaceTemperature"
+            formControlName="surface_temperature"
           />
         </div>
         <div class="form-group">
@@ -92,13 +92,13 @@
           />
         </div>
         <div class="form-group">
-          <label for="orbitalPeriod">Orbital Period (days)</label>
+          <label for="orbital_period">Orbital Period (days)</label>
           <input
             type="number"
-            name="orbitalPeriod"
-            id="orbitalPeriod"
+            name="orbital_period"
+            id="orbital_period"
             class="form-control"
-            formControlName="orbitalPeriod"
+            formControlName="orbital_period"
             min="0"
           />
         </div>
@@ -110,30 +110,20 @@
             class="form-control"
             formControlName="status"
           >
-            <option value="confirmed">Active</option>
-            <option value="candidate">Inactive</option>
-            <option value="disproven">Discovered</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="candidate">Candidate</option>
+            <option value="disproven">Disproven</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="numOfMoons">Number of Moons</label>
+          <label for="num_moons">Number of Moons</label>
           <input
             type="number"
-            name="numOfMoons"
-            id="numOfMoons"
+            name="num_moons"
+            id="num_moons"
             class="form-control"
-            formControlName="numOfMoons"
+            formControlName="num_moons"
             min="0"
-          />
-        </div>
-        <div class="form-group">
-          <label for="contributedBy">Contributed By</label>
-          <input
-            type="text"
-            name="contributedBy"
-            id="contributedBy"
-            class="form-control"
-            formControlName="contributedBy"
           />
         </div>
         <div class="row d-flex justify-content-between">
@@ -147,7 +137,10 @@
             </button>
           </div>
           <div class="col-sm-4 text-end">
-            <a [routerLink]="['/stars', star_id]" class="btn btn-danger" style="margin-top: 20px; cursor: pointer"
+            <a
+              [routerLink]="['/stars', star_id]"
+              class="btn btn-info"
+              style="margin-top: 20px; cursor: pointer"
               >Return</a
             >
           </div>

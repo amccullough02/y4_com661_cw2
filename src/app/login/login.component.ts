@@ -21,7 +21,7 @@ export class LoginComponent {
       .login(this.username, this.password)
       .subscribe((response: any) => {
         console.log(response);
-        localStorage.setItem('auth_token', response.token);
+        localStorage.setItem('x-access-token', response.token);
       });
   }
 }

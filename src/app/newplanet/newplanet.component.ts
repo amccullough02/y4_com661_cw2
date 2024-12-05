@@ -35,16 +35,27 @@ export class NewPlanet {
       mass: 0,
       radius: 0,
       density: 0,
-      surfaceTemperature: 0,
+      surface_temperature: 0,
       apoapsis: 0,
       periapsis: 0,
       eccentricity: 0,
-      orbitalPeriod: 0,
+      orbital_period: 0,
       status: [''],
-      numOfMoons: 0,
-      contributedBy: [''],
+      num_moons: 0,
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const formData = new FormData();
+    Object.entries(this.newPlanetForm.value).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+
+    this.webService
+      .createPlanet(this.star_id, formData)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.newPlanetForm.reset();
+      });
+  }
 }

@@ -12,8 +12,9 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   styleUrl: './starsystem.component.css',
 })
 export class StarsystemComponent {
-  star_data: any;
+  star_name: string = '';
   planets: any;
+  star_id: string = '';
 
   constructor(public webService: WebService, private route: ActivatedRoute) {}
 
@@ -21,8 +22,9 @@ export class StarsystemComponent {
     this.webService
       .getStar(this.route.snapshot.paramMap.get('id'))
       .subscribe((response: any) => {
-        this.star_data = response;
+        this.star_name = response.name;
         this.planets = response.planets;
+        this.star_id = response._id;
       });
   }
 }

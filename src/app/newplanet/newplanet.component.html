@@ -3,7 +3,6 @@
     <div class="col-sm-6">
       <h2 class="text-center">Add a new planet to {{ star_name }}</h2>
       <form [formGroup]="newPlanetForm" (ngSubmit)="onSubmit()">
-        <!-- Planet Name -->
         <div class="form-group">
           <label for="name">Planet name</label>
           <input
@@ -14,8 +13,6 @@
             formControlName="name"
           />
         </div>
-
-        <!-- Radius -->
         <div class="form-group">
           <label for="radius">Radius (km)</label>
           <input
@@ -139,9 +136,22 @@
             formControlName="contributedBy"
           />
         </div>
-        <button class="btn btn-primary" type="submit" style="margin-top: 20px">
-          Submit
-        </button>
+        <div class="row d-flex justify-content-between">
+          <div class="col-sm-4">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              style="margin-top: 20px"
+            >
+              Submit
+            </button>
+          </div>
+          <div class="col-sm-4 text-end">
+            <a [routerLink]="['/stars', star_id]" class="btn btn-danger" style="margin-top: 20px; cursor: pointer"
+              >Return</a
+            >
+          </div>
+        </div>
       </form>
     </div>
   </div>

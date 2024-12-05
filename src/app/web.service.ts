@@ -13,12 +13,12 @@ export class WebService {
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(username + ':' + password),
     });
-    return this.http.get<any>('http://localhost:5000/api/v1.0/login', { headers });
+    return this.http.get<any>('http://127.0.0.1:5000/api/v1.0/login', { headers });
   }
 
   getStars(pageNumber?: number) {
     return this.http.get<any>(
-      'http://localhost:5000/api/v1.0/bodies?pn=' +
+      'http://127.0.0.1:5000/api/v1.0/bodies?pn=' +
         pageNumber +
         '&ps=' +
         this.pageSize
@@ -27,13 +27,13 @@ export class WebService {
 
   getStar(id: any) {
     return this.http.get<any>(
-      'http://localhost:5000/api/v1.0/bodies/' + id + '?show_planets=false'
+      'http://127.0.0.1:5000/api/v1.0/bodies/' + id + '?show_planets=false'
     );
   }
 
   getNumOfStars() {
     return this.http
-      .get<any>('http://localhost:5000/api/v1.0/bodies/num_of_stars')
+      .get<any>('http://127.0.0.1:5000/api/v1.0/bodies/num_of_stars')
       .pipe(map((response: any[]) => response[0]['Number of stars']));
   }
 

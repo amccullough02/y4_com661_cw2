@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { WebService } from '../web.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'new_planet',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   providers: [WebService],
   templateUrl: './newplanet.component.html',
 })
 export class NewPlanet {
   star_name: string = '';
+  star_id: string = '';
   newPlanetForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -26,6 +27,7 @@ export class NewPlanet {
       .getStar(this.route.snapshot.paramMap.get('id'))
       .subscribe((response: any) => {
         this.star_name = response.name;
+        this.star_id = response._id;
       });
 
     this.newPlanetForm = this.formbuilder.group({

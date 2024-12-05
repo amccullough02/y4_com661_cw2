@@ -58,8 +58,28 @@ export class WebService {
     );
   }
 
+  editPlanet(star_id: any, planet_id: any, editPlanetData: FormData) {
+    const token = localStorage.getItem('x-access-token');
+    const headers = new HttpHeaders({
+      'x-access-token': token || '',
+    });
+
+    return this.http.put<any>(
+      'http://127.0.0.1:5000/api/v1.0/bodies/' +
+        star_id +
+        '/planets/' +
+        planet_id,
+      editPlanetData,
+      { headers }
+    );
+  }
+
   getPlanet(star_id: any, planet_id: any) {
     return this.http.get<any>(
-      'http://127.0.0.1:5000/api/v1.0/bodies/' + star_id + '/planets/' + planet_id)
+      'http://127.0.0.1:5000/api/v1.0/bodies/' +
+        star_id +
+        '/planets/' +
+        planet_id
+    );
   }
 }

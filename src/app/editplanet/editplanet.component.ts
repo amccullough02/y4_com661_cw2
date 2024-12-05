@@ -21,7 +21,21 @@ export class EditPlanetComponent {
     public webService: WebService,
     private route: ActivatedRoute,
     private formbuilder: FormBuilder
-  ) {}
+  ) {
+    this.editPlanetForm = this.formbuilder.group({
+      name: [''],
+      mass: [''],
+      radius: [''],
+      density: [''],
+      surface_temperature: [''],
+      apoapsis: [''],
+      periapsis: [''],
+      eccentricity: [''],
+      orbital_period: [''],
+      status: [''],
+      num_moons: [''],
+    });
+  }
 
   ngOnInit() {
     this.planet_id = this.route.snapshot.paramMap.get('id');
@@ -47,5 +61,17 @@ export class EditPlanetComponent {
       });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const formData = new FormData();
+    Object.entries(this.editPlanetForm.value).forEach(([key, value]) => {
+      formData.append(key, value as string);
+    });
+
+    this.webService
+      .editPlanet(this.star_id, this.planet_id, formData)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.editPlanetForm.reset();
+      });
+  }
 }

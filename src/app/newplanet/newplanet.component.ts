@@ -20,16 +20,7 @@ export class NewPlanet {
     public webService: WebService,
     private route: ActivatedRoute,
     private formbuilder: FormBuilder
-  ) {}
-
-  ngOnInit() {
-    this.webService
-      .getStar(this.route.snapshot.paramMap.get('id'))
-      .subscribe((response: any) => {
-        this.star_name = response.name;
-        this.star_id = response._id;
-      });
-
+  ) {
     this.newPlanetForm = this.formbuilder.group({
       name: [''],
       mass: 0,
@@ -43,6 +34,15 @@ export class NewPlanet {
       status: [''],
       num_moons: 0,
     });
+  }
+
+  ngOnInit() {
+    this.webService
+      .getStar(this.route.snapshot.paramMap.get('id'))
+      .subscribe((response: any) => {
+        this.star_name = response.name;
+        this.star_id = response._id;
+      });
   }
 
   onSubmit() {

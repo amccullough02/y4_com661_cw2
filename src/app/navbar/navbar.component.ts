@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'navbar',
   standalone: true,
-  imports: [RouterOutlet, RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './navbar.component.html',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  get isLoggedIn(): boolean {
+    return !!localStorage.getItem('x-access-token');
+  }
+}

@@ -1,3 +1,19 @@
-<div style="margin-top: 70px">
-  <p>Homepage placeholder.</p>
+<div class="d-flex flex-column min-vh-100">
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="container text-center py-5">
+      <div class="hero-section py-5 px-4 bg-light shadow-sm rounded">
+        <h1 class="display-4">Welcome to the Extrasolar Bodies Database</h1>
+        <p class="lead">We are a group of community volunteers who document exoplanets.</p>
+        <a
+          [routerLink]="['/stars']"
+          class="btn btn-dark mt-3"
+          style="cursor: pointer"
+          >Explore the Database!</a
+        >
+      </div>
+    </div>
+  </main>
+  <footer class="py-2 bg-light text-center mt-auto">
+    <p class="m-0">© 2024 Extra Solar Bodies Database. All rights reserved.</p>
+  </footer>
 </div>

@@ -18,6 +18,16 @@ export class WebService {
     });
   }
 
+  logout() {
+    const token = localStorage.getItem('x-access-token');
+    const headers = new HttpHeaders({
+      'x-access-token': token || '',
+    });
+    return this.http.get<any>('http://127.0.0.1:5000/api/v1.0/logout', {
+      headers,
+    });
+  }
+
   getStars(pageNumber?: number) {
     return this.http.get<any>(
       'http://127.0.0.1:5000/api/v1.0/bodies?pn=' +

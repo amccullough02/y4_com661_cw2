@@ -9,21 +9,16 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FormsModule],
   providers: [WebService],
-  templateUrl: './login.component.html',
+  templateUrl: './logout.component.html',
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-
+export class LogoutComponent {
   constructor(private webService: WebService, private router: Router) {}
 
-  onLogin() {
-    this.webService
-      .login(this.username, this.password)
-      .subscribe((response: any) => {
-        console.log(response);
-        localStorage.setItem('x-access-token', response.token);
-      });
+  ngOnInit() {
+    this.webService.logout().subscribe((response: any) => {
+      console.log(response);
+    });
+    localStorage.removeItem('x-access-token');
     this.router.navigateByUrl('/');
   }
 }

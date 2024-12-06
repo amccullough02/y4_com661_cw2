@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { NewPlanet } from './newplanet/newplanet.component';
 import { PlanetComponent } from './planet/planet.component';
 import { EditPlanetComponent } from './editplanet/editplanet.component';
+import { LogoutComponent } from './logout/logout.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   },
   {
     path: 'new_planet/:id',

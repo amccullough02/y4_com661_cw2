@@ -19,6 +19,14 @@
       <div class="row d-flex justify-content-between">
         <div class="col-sm-4">
           <a
+            [routerLink]="['/stars', star_id]"
+            class="btn btn-info"
+            style="margin-top: 20px; cursor: pointer"
+            >Return</a
+          >
+        </div>
+        <div class="col-sm-4 text-center">
+          <a
             [routerLink]="['/edit_planet', planet_id]"
             [queryParams]="{ star_id: star_id }"
             class="btn btn-primary"
@@ -28,10 +36,10 @@
         </div>
         <div class="col-sm-4 text-end">
           <a
-            [routerLink]="['/stars', star_id]"
-            class="btn btn-info"
+            (click)="onDelete()"
+            class="btn btn-danger"
             style="margin-top: 20px; cursor: pointer"
-            >Return</a
+            >Delete Planet</a
           >
         </div>
       </div>

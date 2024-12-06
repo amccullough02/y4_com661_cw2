@@ -55,6 +55,15 @@ export class WebService {
     );
   }
 
+  getPlanet(star_id: any, planet_id: any) {
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/bodies/' +
+        star_id +
+        '/planets/' +
+        planet_id
+    );
+  }
+
   createPlanet(id: any, newPlanetData: FormData) {
     const token = localStorage.getItem('x-access-token');
     const headers = new HttpHeaders({
@@ -84,12 +93,17 @@ export class WebService {
     );
   }
 
-  getPlanet(star_id: any, planet_id: any) {
-    return this.http.get<any>(
+  deletePlanet(star_id: any, planet_id: any) {
+    const token = localStorage.getItem('x-access-token');
+    const headers = new HttpHeaders({
+      'x-access-token': token || '',
+    });
+    return this.http.delete<any>(
       'http://127.0.0.1:5000/api/v1.0/bodies/' +
         star_id +
         '/planets/' +
-        planet_id
+        planet_id, 
+      { headers }
     );
   }
 }

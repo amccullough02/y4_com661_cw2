@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { WebService } from '../web.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,11 @@ export class PlanetComponent {
   star_id: any;
   planet: any;
 
-  constructor(public webService: WebService, private route: ActivatedRoute) {}
+  constructor(
+    public webService: WebService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.planet_id = this.route.snapshot.paramMap.get('id');
@@ -28,5 +32,14 @@ export class PlanetComponent {
       .subscribe((response: any) => {
         this.planet = response;
       });
+  }
+
+  onDelete() {
+    this.webService
+      .deletePlanet(this.star_id, this.planet_id)
+      .subscribe((response: any) => {
+        console.log(response);
+      });
+    this.router.navigateByUrl('/stars/' + this.star_id);
   }
 }

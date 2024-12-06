@@ -10,6 +10,9 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   get isLoggedIn(): boolean {
-    return !!localStorage.getItem('x-access-token');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return !!window.localStorage.getItem('x-access-token');
+    }
+    return false;
   }
 }

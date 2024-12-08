@@ -7,19 +7,12 @@ import { NewPlanet } from './newplanet/newplanet.component';
 import { PlanetComponent } from './planet/planet.component';
 import { EditPlanetComponent } from './editplanet/editplanet.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-  },
-  {
-    path: 'stars',
-    component: StarsComponent,
-  },
-  {
-    path: 'stars/:id',
-    component: StarsystemComponent,
   },
   {
     path: 'login',
@@ -28,6 +21,18 @@ export const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'stars',
+    component: StarsComponent,
+  },
+  {
+    path: 'stars/:id',
+    component: StarsystemComponent,
   },
   {
     path: 'new_planet/:id',

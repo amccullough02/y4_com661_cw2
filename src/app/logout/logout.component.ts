@@ -5,7 +5,7 @@ import { WebService } from '../web.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'logout',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FormsModule],
   providers: [WebService],

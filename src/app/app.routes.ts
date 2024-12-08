@@ -8,6 +8,7 @@ import { PlanetComponent } from './planet/planet.component';
 import { EditPlanetComponent } from './editplanet/editplanet.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LogsComponent } from './logs/logs.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +46,9 @@ export const routes: Routes = [
   {
     path: 'edit_planet/:id',
     component: EditPlanetComponent,
+  },
+  {
+    path: 'logs',
+    component: LogsComponent,
   },
 ];

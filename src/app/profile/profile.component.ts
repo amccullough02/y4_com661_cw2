@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
-  selector: 'home-page',
+  selector: 'profile',
   standalone: true,
   imports: [RouterModule],
   templateUrl: './profile.component.html',

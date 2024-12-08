@@ -24,6 +24,6 @@ export class LoginComponent {
         console.log(response);
         localStorage.setItem('x-access-token', response.token);
       });
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/profile');
   }
 }

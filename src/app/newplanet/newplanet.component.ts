@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { WebService } from '../web.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,6 +15,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   providers: [WebService],
   templateUrl: './newplanet.component.html',
+  styleUrl: './newplanet.component.css',
 })
 export class NewPlanet {
   star_name: string = '';
@@ -23,7 +29,7 @@ export class NewPlanet {
     private router: Router
   ) {
     this.newPlanetForm = this.formbuilder.group({
-      name: [''],
+      name: ['', Validators.required],
       mass: 0,
       radius: 0,
       density: 0,
@@ -32,7 +38,7 @@ export class NewPlanet {
       periapsis: 0,
       eccentricity: 0,
       orbital_period: 0,
-      status: [''],
+      status: ['', Validators.required],
       num_moons: 0,
     });
   }
@@ -44,6 +50,26 @@ export class NewPlanet {
         this.star_name = response.name;
         this.star_id = response._id;
       });
+  }
+
+  isInvalid(control: string) {
+    return (
+      this.newPlanetForm.controls[control].invalid &&
+      this.newPlanetForm.controls[control].touched
+    );
+  }
+
+  isUntouched() {
+    return (
+      this.newPlanetForm.controls['name'].pristine ||
+      this.newPlanetForm.controls['status'].pristine
+    );
+  }
+
+  isIncomplete() {
+    return (
+      this.isInvalid('name') || this.isInvalid('status') || this.isUntouched()
+    );
   }
 
   onSubmit() {

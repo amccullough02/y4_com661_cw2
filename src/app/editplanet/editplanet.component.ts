@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { WebService } from '../web.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,8 @@ export class EditPlanetComponent {
   constructor(
     public webService: WebService,
     private route: ActivatedRoute,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private router: Router
   ) {
     this.editPlanetForm = this.formbuilder.group({
       name: [''],
@@ -70,8 +71,9 @@ export class EditPlanetComponent {
     this.webService
       .editPlanet(this.star_id, this.planet_id, formData)
       .subscribe((response: any) => {
-        console.log(response);
         this.editPlanetForm.reset();
+        const url = ['/planets', this.planet_id];
+        this.router.navigate(url, { queryParams: { star_id: this.star_id } });
       });
   }
 }

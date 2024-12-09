@@ -21,7 +21,6 @@ export class LoginComponent {
     this.webService
       .login(this.username, this.password)
       .subscribe((response: any) => {
-        console.log(response);
         localStorage.setItem('x-access-token', response.token);
       });
     this.router.navigateByUrl('/profile');

@@ -30,9 +30,9 @@ export class AuthService {
     return '<username>';
   }
 
-  checkIfAdmin() {
+  get checkIfAdmin() {
     if (this.token) {
-      return this.token.is_admin;
+      return this.token.is_admin == true;
     }
     return false;
   }

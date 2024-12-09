@@ -81,6 +81,7 @@ export class NewPlanet {
     this.webService
       .createPlanet(this.star_id, formData)
       .subscribe((response: any) => {
+        console.log(response)
         this.newPlanetForm.reset();
         this.router.navigateByUrl('/stars/' + this.star_id);
       });

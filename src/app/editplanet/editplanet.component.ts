@@ -71,6 +71,7 @@ export class EditPlanetComponent {
     this.webService
       .editPlanet(this.star_id, this.planet_id, formData)
       .subscribe((response: any) => {
+        console.log(response)
         this.editPlanetForm.reset();
         const url = ['/planets', this.planet_id];
         this.router.navigate(url, { queryParams: { star_id: this.star_id } });

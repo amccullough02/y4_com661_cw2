@@ -9,6 +9,13 @@ export class WebService {
 
   constructor(private http: HttpClient) {}
 
+  register(newUserData: FormData) {
+    return this.http.post<any>(
+      'http://127.0.0.1:5000/api/v1.0/register',
+      newUserData
+    );
+  }
+
   login(username: string, password: string) {
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(username + ':' + password),

@@ -4,6 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WebService } from '../web.service';
 import { Router } from '@angular/router';
 
+/**
+ * A component containing logic that enables user login.
+ */
 @Component({
   selector: 'login',
   standalone: true,
@@ -12,11 +15,25 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+  /**
+   * A variable used to store the input of the username.
+   */
   username: string = '';
+  /**
+   * A variable used to store the input of the password.
+   */
   password: string = '';
 
+  /**
+   * The Login component constructor.
+   * @param webService Injected Web Service.
+   * @param router Injected Router.
+   */
   constructor(private webService: WebService, private router: Router) {}
 
+  /**
+   * Passes username and password to the Web Service.
+   */
   onLogin() {
     this.webService
       .login(this.username, this.password)

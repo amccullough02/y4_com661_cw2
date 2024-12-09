@@ -4,6 +4,9 @@ import { WebService } from '../web.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+/**
+ * A component containing logic that enables the modification of planet data.
+ */
 @Component({
   selector: 'edit_planet',
   standalone: true,
@@ -12,11 +15,30 @@ import { CommonModule } from '@angular/common';
   templateUrl: './editplanet.component.html',
 })
 export class EditPlanetComponent {
+  /**
+   * The name of the planet being modified.
+   */
   planet_name: string = '';
+  /**
+   * The id of the planet being modified.
+   */
   planet_id: any;
+  /**
+   * The id of the star associated with this planet.
+   */
   star_id: any;
+  /**
+   * The formgroup used for modifying planets.
+   */
   editPlanetForm: FormGroup = new FormGroup({});
 
+  /**
+   * The Edit Planet constructor.
+   * @param webService Injected Web Service.
+   * @param route Injected Activated Route.
+   * @param formbuilder Injected Form Builder.
+   * @param router Injected Router.
+   */
   constructor(
     public webService: WebService,
     private route: ActivatedRoute,
@@ -38,6 +60,9 @@ export class EditPlanetComponent {
     });
   }
 
+  /**
+   * Initialisation method for the Edit Planet component.
+   */
   ngOnInit() {
     this.planet_id = this.route.snapshot.paramMap.get('id');
     this.star_id = this.route.snapshot.queryParamMap.get('star_id');
@@ -62,6 +87,9 @@ export class EditPlanetComponent {
       });
   }
 
+  /**
+   * Binds data from the Form Group to a Form Data object. This object is then passed to the Web Service.
+   */
   onSubmit() {
     const formData = new FormData();
     Object.entries(this.editPlanetForm.value).forEach(([key, value]) => {
@@ -71,7 +99,7 @@ export class EditPlanetComponent {
     this.webService
       .editPlanet(this.star_id, this.planet_id, formData)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.editPlanetForm.reset();
         const url = ['/planets', this.planet_id];
         this.router.navigate(url, { queryParams: { star_id: this.star_id } });

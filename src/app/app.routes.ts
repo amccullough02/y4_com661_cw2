@@ -12,6 +12,7 @@ import { LogsComponent } from './logs/logs.component';
 import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
 import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+  },
+  {
+    path: 'user/:id',
+    component: UserComponent
   },
   {
     path: 'stars',

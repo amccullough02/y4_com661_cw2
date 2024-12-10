@@ -28,6 +28,4 @@ export class UsersComponent {
       console.log(response);
     });
   }
-
-  deleteUser() {}
 }

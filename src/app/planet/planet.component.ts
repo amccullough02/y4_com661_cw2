@@ -5,6 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 
+/**
+ * The component used to display individual planet data.
+ */
 @Component({
   selector: 'planet',
   standalone: true,
@@ -13,10 +16,26 @@ import { AuthService } from '../auth.service';
   templateUrl: './planet.component.html',
 })
 export class PlanetComponent {
+  /**
+   * The id of the planet being displayed.
+   */
   planet_id: any;
+  /**
+   * The id of the associated star.
+   */
   star_id: any;
+  /**
+   * Contains data about the planet.
+   */
   planet: any;
 
+  /**
+   * The constructor for the Planet component.
+   * @param webService Injected Web Service.
+   * @param authService Injected Auth Service.
+   * @param route Injected Activated Router.
+   * @param router Injected Router.
+   */
   constructor(
     public webService: WebService,
     public authService: AuthService,
@@ -24,6 +43,9 @@ export class PlanetComponent {
     private router: Router
   ) {}
 
+  /**
+   * The initialisation method for the Planet component.
+   */
   ngOnInit() {
     this.planet_id = this.route.snapshot.paramMap.get('id');
     this.star_id = this.route.snapshot.queryParamMap.get('star_id');
@@ -35,6 +57,9 @@ export class PlanetComponent {
       });
   }
 
+  /**
+   * Deletes a planet by calling the Web Service. If successful, a redirect to the system page occurs.
+   */
   onDelete() {
     this.webService
       .deletePlanet(this.star_id, this.planet_id)

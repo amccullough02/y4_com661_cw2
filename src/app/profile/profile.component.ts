@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../auth.service';
 
+/**
+ * A simple component used to display information about the currently authenticated user.
+ */
 @Component({
   selector: 'profile',
   standalone: true,
@@ -11,5 +13,9 @@ import { AuthService } from '../auth.service';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
+  /**
+   * The constructor for the Profile component.
+   * @param authService Injected Auth Service.
+   */
   constructor(public authService: AuthService) {}
 }

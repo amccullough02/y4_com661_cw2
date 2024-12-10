@@ -8,8 +8,10 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { error } from 'console';
 
+/**
+ * The component used to enable the registration of new accounts.
+ */
 @Component({
   selector: 'register',
   standalone: true,
@@ -18,9 +20,21 @@ import { error } from 'console';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
+  /**
+   * Stores a boolean to determine if the password and confirm password fields match or not.
+   */
   passwordMismatch = false;
+  /**
+   * The Form Group for creating new users.
+   */
   newUserForm: FormGroup = new FormGroup({});
 
+  /**
+   * The constructor for the Register component.
+   * @param webService Injected WebService.
+   * @param formBuilder Injected Form Builder.
+   * @param router Injected Router.
+   */
   constructor(
     public webService: WebService,
     private formBuilder: FormBuilder,
@@ -36,6 +50,11 @@ export class RegisterComponent {
     });
   }
 
+  /**
+   * Checks if a form field is invalid.
+   * @param control The name of the form field.
+   * @returns A boolean based on the validity of the form field.
+   */
   isInvalid(control: string) {
     return (
       this.newUserForm.controls[control].invalid &&
@@ -43,6 +62,10 @@ export class RegisterComponent {
     );
   }
 
+  /**
+   * Checks if a form field has interacted with.
+   * @returns A boolean based on if the field has been interacted with.
+   */
   isUntouched() {
     return (
       this.newUserForm.controls['username'].pristine ||
@@ -54,6 +77,10 @@ export class RegisterComponent {
     );
   }
 
+  /**
+   * Checks if the form is incomplete.
+   * @returns A boolean based on if the form is incomplete.
+   */
   isIncomplete() {
     return (
       this.isInvalid('username') ||
@@ -66,6 +93,10 @@ export class RegisterComponent {
     );
   }
 
+  /**
+   * Binds data from the Form Group object to to a Form Data object. If passwords match then the Web Service is called, if not, the method will return early. If successful, the user is redirected to the login screen.
+   * @returns Will exit early if the passwords do not match.
+   */
   onRegister() {
     const formData = new FormData();
 

@@ -63,6 +63,10 @@ export class WebService {
     });
   }
 
+  /**
+   * Acquires a list of users.
+   * @returns An observable containing a list of users.
+   */
   getUsers() {
     const token = localStorage.getItem('x-access-token');
     const headers = new HttpHeaders({
@@ -73,6 +77,11 @@ export class WebService {
     });
   }
 
+  /**
+   * Acquire a single user.
+   * @param username The username to search for.
+   * @returns An observable containing the specified user.
+   */
   getUser(username: any) {
     const token = localStorage.getItem('x-access-token');
     const headers = new HttpHeaders({
@@ -86,6 +95,11 @@ export class WebService {
     );
   }
 
+  /**
+   * Delete a single user.
+   * @param username The username of the user to delete.
+   * @returns An observable containing the backend response.
+   */
   deleteUser(username: any) {
     const token = localStorage.getItem('x-access-token');
     const headers = new HttpHeaders({
@@ -124,7 +138,7 @@ export class WebService {
 
   /**
    * Acquires the number of stars within the MongoDB instance.
-   * @returns An observable containing the number of stars.
+   * @returns An integer representing the number of stars within the MongoDB instance.
    */
   getNumOfStars() {
     return this.http

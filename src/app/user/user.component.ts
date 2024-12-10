@@ -15,9 +15,22 @@ import { AuthService } from '../auth.service';
   templateUrl: './user.component.html',
 })
 export class UserComponent {
+  /**
+   * Data about the user.
+   */
   user: any;
+  /**
+   * The username of the user.
+   */
   username: string = '';
 
+  /**
+   * The constructor for the User component.
+   * @param webService Injected Web Service.
+   * @param authService Injected Auth Service.
+   * @param route Injected Activated Route.
+   * @param router Injected Router.
+   */
   constructor(
     public webService: WebService,
     private authService: AuthService,
@@ -25,6 +38,9 @@ export class UserComponent {
     private router: Router
   ) {}
 
+  /**
+   * Initialisation method for the User component.
+   */
   ngOnInit() {
     this.webService
       .getUser(this.route.snapshot.paramMap.get('id'))
@@ -34,6 +50,9 @@ export class UserComponent {
       });
   }
 
+  /**
+   * Checks if the user being viewed is the same as the authenticated user. If true, the delete account button is hidden.
+   */
   get sameUser() {
     if (this.username === this.authService.getUsername()) {
       return true;
@@ -41,6 +60,9 @@ export class UserComponent {
     return false;
   }
 
+  /**
+   * Calls the Web Service to delete the user.
+   */
   deleteUser() {
     this.webService
       .deleteUser(this.user.username)

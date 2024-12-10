@@ -10,6 +10,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LogsComponent } from './logs/logs.component';
 import { RegisterComponent } from './register/register.component';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
   {
@@ -55,5 +56,9 @@ export const routes: Routes = [
   {
     path: 'logs',
     component: LogsComponent,
+  },
+  {
+    path: 'test',
+    component: TestComponent,
   },
 ];

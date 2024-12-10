@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LogsComponent } from './logs/logs.component';
 import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
+import { UsersComponent } from './users/users.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
   },
   {
     path: 'stars',

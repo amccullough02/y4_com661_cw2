@@ -63,6 +63,31 @@ export class WebService {
     });
   }
 
+  getUsers() {
+    const token = localStorage.getItem('x-access-token');
+    const headers = new HttpHeaders({
+      'x-access-token': token || '',
+    });
+    return this.http.get<any>('http://127.0.0.1:5000/api/v1.0/accounts', {
+      headers,
+    });
+  }
+
+  getUser(username: any) {
+    const token = localStorage.getItem('x-access-token');
+    const headers = new HttpHeaders({
+      'x-access-token': token || '',
+    });
+    return this.http.get<any>(
+      'http://127.0.0.1:5000/api/v1.0/accounts/' + username,
+      {
+        headers,
+      }
+    );
+  }
+
+  deleteUser(id: any) {}
+
   /**
    * Acquires a paginated collection of stars.
    * @param pageNumber The page to request.

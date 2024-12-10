@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterModule, ReactiveFormsModule, CommonModule],
   providers: [WebService],
   templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   /**

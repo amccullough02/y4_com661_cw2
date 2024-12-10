@@ -81,12 +81,14 @@
             }"
           />
         </div>
-        <span *ngIf="isIncomplete()" class="text-secondary">
-          You must complete all fields.
-        </span>
-        <span *ngIf="passwordMismatch" class="text-secondary">
-          Passwords must match.
-        </span>
+        <div style="min-height: 20px">
+          <span *ngIf="isIncomplete()" class="text-secondary">
+            You must complete all fields.
+          </span>
+          <span *ngIf="passwordMismatch" class="text-secondary">
+            Passwords must match.
+          </span>
+        </div>
         <button
           *ngIf="!isIncomplete()"
           class="btn btn-primary"

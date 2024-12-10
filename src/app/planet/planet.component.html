@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-4 text-center">
           <a
-            *ngIf="authService.isLoggedIn"
+            *ngIf="authService.isLoggedIn && checkUsername"
             [routerLink]="['/edit_planet', planet_id]"
             [queryParams]="{ star_id: star_id }"
             class="btn btn-primary"

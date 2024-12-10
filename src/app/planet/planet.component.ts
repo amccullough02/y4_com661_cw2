@@ -58,13 +58,24 @@ export class PlanetComponent {
   }
 
   /**
+   * Checks if the currently authenticated user matches the username of the planet's contributor.
+   * @returns A boolean of true if the names match, otherwise false.
+   */
+  get checkUsername() {
+    const current_user = this.authService.getUsername();
+    if (this.planet.contributed_by === current_user) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
    * Deletes a planet by calling the Web Service. If successful, a redirect to the system page occurs.
    */
   onDelete() {
     this.webService
       .deletePlanet(this.star_id, this.planet_id)
-      .subscribe((response: any) => {
-      });
+      .subscribe((response: any) => {});
     this.router.navigateByUrl('/stars/' + this.star_id);
   }
 }

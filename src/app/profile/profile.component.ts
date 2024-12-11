@@ -15,6 +15,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
+  /**
+   * The user data used for the profile.
+   */
   userData: any;
 
   /**
@@ -24,6 +27,9 @@ export class ProfileComponent {
    */
   constructor(public authService: AuthService, public webService: WebService) {}
 
+  /**
+   * Initialisation method for the Profile component.
+   */
   ngOnInit() {
     this.webService
       .getUser(this.authService.getUsername())

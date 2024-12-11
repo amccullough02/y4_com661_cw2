@@ -35,13 +35,16 @@ export class AuthService {
 
   /**
    * Acquires the username of the active user.
-   * @returns The username of the active user or a '<username' placeholder.
+   * @returns The username of the active user.
    */
   getUsername() {
-    if (this.token) {
-      return this.token.user;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.token) {
+        return this.token.user;
+      }
+      return null;
     }
-    return '<username>';
+    return null;
   }
 
   /**
@@ -49,8 +52,11 @@ export class AuthService {
    * @returns A boolean based on the user's is_admin property.
    */
   get checkIfAdmin() {
-    if (this.token) {
-      return this.token.is_admin == true;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (this.token) {
+        return this.token.is_admin == true;
+      }
+      return false;
     }
     return false;
   }

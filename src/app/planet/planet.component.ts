@@ -58,10 +58,13 @@ export class PlanetComponent {
   }
 
   /**
-   * Checks if the currently authenticated user matches the username of the planet's contributor.
+   * Checks if the currently authenticated user matches the username of the planet's contributor. This is overridden if you are an admin user.
    * @returns A boolean of true if the names match, otherwise false.
    */
   get checkUsername() {
+    if (this.authService.checkIfAdmin) {
+      return true;
+    }
     const current_user = this.authService.getUsername();
     if (this.planet.contributed_by === current_user) {
       return true;
@@ -76,6 +79,8 @@ export class PlanetComponent {
     this.webService
       .deletePlanet(this.star_id, this.planet_id)
       .subscribe((response: any) => {});
-    this.router.navigateByUrl('/stars/' + this.star_id);
+    this.router.navigateByUrl('/stars/' + this.star_id).then(() => {
+      window.location.reload();
+    });
   }
 }

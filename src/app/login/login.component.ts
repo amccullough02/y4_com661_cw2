@@ -43,7 +43,9 @@ export class LoginComponent {
       next: (response: any) => {
         localStorage.setItem('x-access-token', response.token);
         this.errorMessage = '';
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/profile').then(() => {
+          window.location.reload();
+        });
       },
       error: (err: any) => {
         this.errorMessage =

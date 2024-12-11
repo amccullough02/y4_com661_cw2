@@ -30,6 +30,8 @@ export class LogoutComponent {
       console.log(response);
     });
     localStorage.removeItem('x-access-token');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/').then(() => {
+      window.location.reload();
+    });
   }
 }

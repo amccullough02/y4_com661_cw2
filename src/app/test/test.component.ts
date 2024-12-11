@@ -10,6 +10,7 @@ import { WebService } from '../web.service';
 export class TestComponent {
   test_output: string[] = [];
   new_planet_id = '';
+  test_star = '67253517c5cdf6233de8bb86'; // Random star from database to use for testing.
 
   constructor(private webService: WebService) {}
 
@@ -34,7 +35,7 @@ export class TestComponent {
 
   testGetStar() {
     this.webService
-      .getStar('67253517c5cdf6233de8bb86')
+      .getStar(this.test_star)
       .subscribe((response: any) => {
         if ((response.name = 'HIP 43077'))
           this.test_output.push('Get a star... PASS');
@@ -52,7 +53,7 @@ export class TestComponent {
 
   testGetPlanet() {
     this.webService
-      .getPlanet('67253517c5cdf6233de8bb86', '67253517c5cdf6233de8b6dd')
+      .getPlanet(this.test_star, '67253517c5cdf6233de8b6dd')
       .subscribe((response: any) => {
         if (response.name === 'HIP 43077 b') {
           this.test_output.push('Get a planet... PASS');
@@ -78,7 +79,7 @@ export class TestComponent {
     formData.append('num_moons', '1');
 
     this.webService
-      .createPlanet('67253517c5cdf6233de8bb86', formData)
+      .createPlanet(this.test_star, formData)
       .subscribe((response: any) => {
         planet_id = response.url.match(/\/planets\/([^/]+)/)[1];
         this.new_planet_id = planet_id;
@@ -110,7 +111,7 @@ export class TestComponent {
     formData.append('num_moons', '1');
 
     this.webService
-      .editPlanet('67253517c5cdf6233de8bb86', new_planet_id, formData)
+      .editPlanet(this.test_star, new_planet_id, formData)
       .subscribe((response: any) => {
         if (
           response.url &&
@@ -127,7 +128,7 @@ export class TestComponent {
 
   testDeletePlanet(new_planet_id: string) {
     this.webService
-      .deletePlanet('67253517c5cdf6233de8bb86', new_planet_id)
+      .deletePlanet(this.test_star, new_planet_id)
       .subscribe((response: any) => {
         if (response.message === 'planet deleted successfully')
           this.test_output.push('Delete a planet... PASS');

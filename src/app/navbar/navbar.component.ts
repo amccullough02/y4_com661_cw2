@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth.service';
 
 /**
- * A simple component used to display the navbar of the applicaiton.
+ * A simple component used to display the navbar of the application.
  */
 @Component({
   selector: 'navbar',

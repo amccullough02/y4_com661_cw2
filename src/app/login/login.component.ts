@@ -23,6 +23,10 @@ export class LoginComponent {
    * A variable used to store the input of the password.
    */
   password: string = '';
+  /**
+   * A variable used to store error responses from the backend so they can be displayed to the user.
+   */
+  errorMessage: string = '';
 
   /**
    * The Login component constructor.
@@ -32,14 +36,19 @@ export class LoginComponent {
   constructor(private webService: WebService, private router: Router) {}
 
   /**
-   * Passes username and password to the Web Service.
+   * Passes username and password to the Web Service. If an error is sent from the backend the message is stored in the errorMessage variable.
    */
   onLogin() {
-    this.webService
-      .login(this.username, this.password)
-      .subscribe((response: any) => {
+    this.webService.login(this.username, this.password).subscribe({
+      next: (response: any) => {
         localStorage.setItem('x-access-token', response.token);
-      });
-    this.router.navigateByUrl('/profile');
+        this.errorMessage = '';
+        this.router.navigateByUrl('/profile');
+      },
+      error: (err: any) => {
+        this.errorMessage =
+          err.error?.message || 'Unsuccessful login attempt, please try again.';
+      },
+    });
   }
 }

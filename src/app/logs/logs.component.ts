@@ -14,6 +14,7 @@ import { ColDef } from 'ag-grid-community';
   imports: [RouterModule, AgGridAngular, CommonModule],
   providers: [WebService],
   templateUrl: './logs.component.html',
+  styleUrl: './logs.component.css',
 })
 export class LogsComponent {
   /**
@@ -25,8 +26,8 @@ export class LogsComponent {
    * Definition of AG Grid column headings.
    */
   headings: ColDef[] = [
-    { field: 'action', width: 740 },
-    { field: 'time', width: 200 },
+    { field: 'action', width: 800 },
+    { field: 'time', width: 300 },
     { field: 'user', width: 150, filter: true, floatingFilter: true },
   ];
 
@@ -39,7 +40,7 @@ export class LogsComponent {
    * Indicates the current state of pagination: enabled or disabled.
    */
   pagination = true;
-   /**
+  /**
    * Indicates the default page size (e.g 10).
    */
   paginationPageSize = 10;

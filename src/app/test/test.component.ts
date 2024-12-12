@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { WebService } from '../web.service';
 
 @Component({
-  selector: 'testWS',
+  selector: 'test',
   standalone: true,
   providers: [WebService],
   templateUrl: './test.component.html',
@@ -10,7 +10,7 @@ import { WebService } from '../web.service';
 export class TestComponent {
   test_output: string[] = [];
   new_planet_id = '';
-  test_star = '67253517c5cdf6233de8bb86'; // Random star from database to use for testing.
+  test_star = '6748544196eb734789dfae27'; // Random star from database to use for testing.
 
   constructor(private webService: WebService) {}
 
@@ -53,9 +53,9 @@ export class TestComponent {
 
   testGetPlanet() {
     this.webService
-      .getPlanet(this.test_star, '67253517c5cdf6233de8b6dd')
+      .getPlanet(this.test_star, '6748544096eb734789dfa9be')
       .subscribe((response: any) => {
-        if (response.name === 'HIP 43077 b') {
+        if (response.name === 'HIP 20656 b') {
           this.test_output.push('Get a planet... PASS');
         } else {
           this.test_output.push('Get a planet... FAIL');
@@ -86,7 +86,7 @@ export class TestComponent {
         if (
           response.url &&
           response.url.startsWith(
-            'http://127.0.0.1:5000/api/v1.0/bodies/67253517c5cdf6233de8bb86/planets/'
+            'http://127.0.0.1:5000/api/v1.0/bodies/6748544196eb734789dfae27/planets/'
           )
         )
           this.test_output.push('Create a new planet... PASS');
@@ -116,7 +116,7 @@ export class TestComponent {
         if (
           response.url &&
           response.url.startsWith(
-            'http://127.0.0.1:5000/api/v1.0/bodies/67253517c5cdf6233de8bb86/planets/'
+            'http://127.0.0.1:5000/api/v1.0/bodies/6748544196eb734789dfae27/planets/'
           )
         )
           this.test_output.push('Edit a planet... PASS');

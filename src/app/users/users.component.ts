@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
  * A component used to provide user management for admins.
  */
 @Component({
-  selector: 'stars',
+  selector: 'users',
   standalone: true,
   imports: [CommonModule, RouterModule],
   providers: [WebService],

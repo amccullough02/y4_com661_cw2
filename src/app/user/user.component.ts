@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
  * A component used to manage a single user.
  */
 @Component({
-  selector: 'stars',
+  selector: 'user',
   standalone: true,
   imports: [CommonModule, RouterModule],
   providers: [WebService, AuthService],
